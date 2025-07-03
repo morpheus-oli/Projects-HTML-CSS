@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="pt-BR" data-bs-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <title>Confraria Literária</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- CSS do Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+  
+  <!-- Ícones do Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Fontes do Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="../Confraria_literaria/imagens/Favcon.jpg" type="image/x-icon">
+  <style>
+    /* ===== ESTILOS GERAIS ===== */
+    @font-face {
+      font-family: 'frankfurter';
+      src: url('frankfurter.ttf') format('truetype'),
+           url('Frankfurter Medium Std Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    :root {
+      --verde-primario: #767a0f;
+      --verde-secundario: #8fa32b;
+      --verde-claro: #a4b849;
+      --bege: #f2f1e9;
+      --bege-escuro: #e6e3d5;
+      --marrom: #403a2f;
+      --dourado: #FFD700;
+      --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transicao: all 0.3s ease;
+    }
+
+    body {
+      background-color: var(--bege);
+      font-family:'Times New Roman', Times, serif;
+      color: #333;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      font-family: 'frankfurter';
+    }
+
+    h3, h4, h5, h6 {
+      font-family:'Times New Roman', Times, serif;
+      color: var(--marrom);
+    }
+
+    .texto-justificado {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .section-title {
+      position: relative;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--verde-primario);
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+
+    /* ===== COMPONENTES ===== */
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: var(--verde-primario);
+      color: white;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--verde-secundario);
+      transform: translateY(-3px) scale(1.1);
+    }
+
+    @keyframes wave {
+      0% { box-shadow: 0 0 0 0 rgba(143, 163, 43, 0.7); }
+      100% { box-shadow: 0 0 0 10px rgba(143, 163, 43, 0); }
+    }
+
+    .back-to-top.clicked {
+      animation: wave 0.6s ease-out;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background-color: var(--verde-primario);
+      padding: 0.5rem 1rem;
+      box-shadow: var(--sombra);
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      min-height: 70px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand img {
+      width: 150px;
+      height: auto;
+      transition: var(--transicao);
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 0.25rem 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      width: 1.25em;
+      height: 1.25em;
+    }
+
+    .navbar-collapse {
+      background-color: var(--verde-primario);
+      padding: 0.5rem 1rem;
+      margin-top: 0.5rem;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      padding: 0.75rem 0.5rem !important;
+      margin: 0.25rem 0;
+      position: relative;
+      font-size: 0.95rem;
+      display: block;
+      text-align: center;
+    }
+
+    .nav-item:not(.active) .nav-link:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--dourado);
+      transition: var(--transicao);
+    }
+
+    .nav-item:not(.active) .nav-link:hover:before,
+    .nav-item:not(.active) .nav-link:focus:before {
+      width: 80%;
+    }
+
+    .nav-item.active .nav-link:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 2px;
+      background: var(--dourado);
+    }
+
+    /* ===== CARDS ===== */
+    .card-personalizado {
+      background-color: #767a0f;
+      color: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .card-personalizado:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* ===== BOTÕES ===== */
+    .btn-verde {
+      background-color: #767a0f;
+      color: white;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-verde:hover {
+      background-color: #8fa32b;
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .btn-outline-light {
+      transition: all 0.2s ease;
+      border-width: 2px;
+    }
+
+    .btn-outline-light:hover {
+      background-color: rgba(242, 241, 233, 0.1);
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Destaques */
+    .destaque-personalizado, .sobre-personalizado {
+      background-color: #403a2f; 
+      color: #ffffff; 
+      background-image: linear-gradient(to right, #403a2f, #585142);
+    }
+
+    /* ===== IMAGENS ===== */
+    .img-fluid.rounded {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .img-fluid.rounded:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2) !important;
+    }
+
+    .fixed-image {
+      width: 100%;
+      height: 250px; 
+      object-fit: cover; 
+      object-position: center; 
+    }
+    
+    .image-container {
+      height: 100%;
+    }
+
+    /* Blog post */
+    .blog-post h2, .blog-post h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--marrom);
+      color: white;
+      padding: 3rem 0;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
+    @media (min-width: 768px) {
+      .navbar {
+          padding: 0.75rem 1.5rem;
+          min-height: 80px;
+      }
+      
+      .navbar-brand img {
+          width: 170px;
+      }
+      
+      .nav-link {
+          padding: 0.5rem 1rem !important;
+          margin: 0 0.25rem;
+          display: inline-block;
+      }
+      
+      .nav-item:not(.active) .nav-link:before {
+          left: 0;
+          transform: none;
+      }
+      
+      .nav-item:not(.active) .nav-link:hover:before,
+      .nav-item:not(.active) .nav-link:focus:before {
+          width: 100%;
+      }
+      
+      .nav-item.active .nav-link:before {
+          left: 0;
+          transform: none;
+          width: 100%;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .navbar {
+          border-radius: 0 0 30px 30px;
+          padding: 0.75rem 2rem;
+      }
+      
+      .navbar-brand img {
+          width: 200px;
+      }
+      
+      .nav-link {
+          font-size: 1rem;
+          padding: 0.5rem 1.25rem !important;
+      }
+      
+      .navbar-collapse {
+          background-color: transparent;
+          padding: 0;
+          margin-top: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+          border-radius: 0;
+      }
+      
+      .card-personalizado {
+        flex-direction: column;
+      }
+      
+      .card-personalizado img {
+        height: 200px;
+        width: 100%;
+      }
+      
+      .fixed-image {
+        height: 180px;
+      }
+      
+      .destaque-personalizado, .sobre-personalizado {
+        padding: 2rem 1rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img width="200" src="imagens/ConfrariaSiteLogo.png" alt="Confraria Literária">
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item active"> 
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="noticias.html">NOTÍCIAS</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Conteúdo Principal -->
+  <main class="container pt-4">
+    <!-- Destaque -->
+    <section class="p-4 p-md-5 mb-4 rounded destaque-personalizado">
+      <div class="col-lg-10 px-0">
+        <h1 class="display-4 fst-italic">Crise Climática em Foco: As Principais Notícias Ambientais.</h1>
+        <p class="lead my-3 texto-justificado">Neste post, reunimos as notícias mais relevantes sobre o meio ambiente para que você fique por dentro dos desafios e avanços na luta contra a crise climática.
+            Se você se preocupa com o futuro do planeta, este é o lugar certo para começar.
+        </p>
+      </div>
+    </section>
+
+    <!-- Posts em destaque -->
+    <section class="row mb-2">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <article class="card-personalizado h-100">
+          <div class="row g-0 h-100">
+            <div class="col-md-8 d-flex flex-column">
+              <div class="card-body p-3 p-md-4">
+                <h3 class="card-title mb-2">Como o avanço do garimpo ilegal devasta a Amazônia e ameaça santuário.</h3>
+                <div class="text-light mb-2 small opacity-75">04/04/2025</div>
+                <p class="card-text mb-3 texto-justificado">Mais de 70% das áreas de garimpo no país hoje são ilegais. Exploração movimenta bilhões deixando rastro de violência e destruição. Agora, atividade ilegal ameaça santuário com as maiores árvores da Amazônia.</p>
+                <a href="https://g1.globo.com/meio-ambiente/noticia/2025/04/04/como-o-avanco-do-garimpo-ilegal-devasta-a-amazonia-e-agora-ameaca-santuario-de-arvores-gigantes.ghtml" 
+                   class="btn btn-outline-light align-self-start d-inline-flex align-items-center mt-auto">
+                  Continue lendo <i class="bi bi-chevron-right ms-1"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <img src="../Confraria_literaria/imagens/amazonia_img.png" class="img-fluid h-100 w-100 object-fit-cover" alt="Amazônia devastada">
+            </div>
+          </div>
+        </article>
+      </div>
+      
+      <div class="col-md-6">
+        <article class="card-personalizado h-100">
+          <div class="row g-0 h-100">
+            <div class="col-md-8 d-flex flex-column">
+              <div class="card-body p-3 p-md-4">
+                <h3 class="card-title mb-2">Chuva e queda de temperatura marcam o início de abril no RS</h3>
+                <div class="text-light mb-2 small opacity-75">01/04/2025</div>
+                <p class="card-text mb-3 texto-justificado">Forte temporal atingiu Porto Alegre e outras cidades do estado na tarde de segunda-feira (31). De acordo com a Climatempo, mês de março foi marcado por temperaturas extremas e chuvas irregulares.</p>
+                <a href="https://g1.globo.com/rs/rio-grande-do-sul/noticia/2025/04/01/chuva-e-queda-de-temperatura-marcam-o-inicio-de-abril-no-rs.ghtml" 
+                   class="btn btn-outline-light align-self-start d-inline-flex align-items-center mt-auto">
+                  Continue lendo <i class="bi bi-chevron-right ms-1"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <img src="../Confraria_literaria/imagens/chuva_img.png" class="img-fluid h-100 w-100 object-fit-cover" alt="Chuva no RS">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="row g-5">
+      <div class="col-md-8 pt-4">
+        <!-- Post principal -->
+        <article class="blog-post">
+          <h2 class="display-5 mb-1">Monitoramento ambiental: qual a importância?</h2>
+          <p class="blog-post-meta">Atualizado em 06/04/2025</p>
+        
+          <img src="../Confraria_literaria/imagens/maunutenção_img.png" class="img-fluid rounded mb-3" alt="Monitoramento ambiental">
+          
+          <p class="texto-justificado">
+            O monitoramento ambiental é um processo que consiste na coleta regular e 
+            organizada de dados sobre a qualidade do ar, da água, do solo e de outros elementos naturais.<br><br>
+        
+            Seu principal objetivo é avaliar as condições ambientais de uma região, identificando os impactos causados por ações humanas ou fenômenos naturais. 
+            A partir dessa análise, é possível adotar medidas preventivas ou corretivas para minimizar danos ao meio ambiente.<br><br>
+            
+            No Brasil, a Política Nacional do Meio Ambiente (PNMA) reconhece o monitoramento como um dos pilares essenciais para a preservação e recuperação dos ecossistemas, 
+            contribuindo para a promoção da qualidade de vida e do desenvolvimento sustentável.
+          </p>
+          
+          <div class="text-center mt-4"> 
+            <a href="https://www.embrapa.br/agencia-de-informacao-tecnologica/cultivos/cana/pre-producao/meio-ambiente/monitoramento-ambiental" class="btn px-4 py-2 text-white btn-verde"> 
+              Saiba mais <i class="bi bi-arrow-right ms-2"></i> 
+            </a>
+          </div>
+        
+          <hr>
+          
+          <h2 class="display-5 mb-1">Hierarquias e atuações dos órgãos ambientais brasileiros</h2>
+          <p class="blog-post-meta">Atualizado em 27/11/2024</p>
+        
+          <img src="../Confraria_literaria/imagens/governo_img.png" class="img-fluid rounded mb-3" alt="Órgãos ambientais">
+          
+          <p class="texto-justificado">
+              Você sabia que o Brasil está entre os países com maior biodiversidade do mundo? Com biomas impressionantes como a Amazônia, o Pantanal e a Mata Atlântica, além de vastas reservas de água doce, nosso país abriga uma enorme riqueza natural.
+              Para proteger esse patrimônio, existe um sistema de órgãos ambientais responsáveis por fiscalizar, preservar e promover o uso sustentável dos nossos recursos. Vamos conhecer melhor como esses órgãos atuam e de que forma contribuem para a preservação do meio ambiente.<br><br>
+        
+              O SISNAMA é o sistema que reúne os órgãos responsáveis pela gestão ambiental no Brasil. Estabelecido pela Lei nº 6.938/81, ele coordena as ações ambientais em três níveis — federal, estadual e municipal — garantindo a aplicação da Política Nacional do Meio Ambiente.
+              Vamos conhecer melhor os principais órgãos que compõem esse sistema e entender como cada um contribui para a proteção do nosso meio ambiente.<br><br>
+          </p>
+          
+          <div class="text-center mt-4"> 
+            <a href="https://www.teraambiental.com.br/blog-da-tera-ambiental/hierarquias-e-atuacoes-dos-orgaos-ambientais-brasileiros" class="btn px-4 py-2 text-white btn-verde"> 
+              Saiba mais <i class="bi bi-arrow-right ms-2"></i> 
+            </a>
+          </div>
+        
+          <hr>
+        </article>
+        
+        <section>
+          <h3 class="mb-4">Consulte mais conteúdos como esses em:</h3>
+
+          <div class="container">
+            <!-- Primeira linha -->
+            <div class="row mb-4">
+              <div class="col-md-4 mb-3 mb-md-0">
+                <a href="https://g1.globo.com/meio-ambiente/" class="d-block image-container">
+                  <img class="img-fluid rounded shadow fixed-image" src="../Confraria_literaria/imagens/g1_logo.png" alt="G1 Meio Ambiente">
+                </a>
+              </div>
+              <div class="col-md-4 mb-3 mb-md-0">
+                <a href="https://brasilescola.uol.com.br/geografia/meio-ambiente.htm" class="d-block image-container">
+                  <img class="img-fluid rounded shadow fixed-image" src="../Confraria_literaria/imagens/brasilescola_logo.png" alt="Brasil Escola">
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="https://www.teraambiental.com.br/" class="d-block image-container">
+                  <img class="img-fluid rounded shadow fixed-image" src="../Confraria_literaria/imagens/tera_ambiental_logo.jpg" alt="Tera Ambiental">
+                </a>
+              </div>
+            </div>
+            
+            <!-- Segunda linha -->
+            <div class="row">
+              <div class="col-md-4 mb-3 mb-md-0">
+                <a href="https://www.wribrasil.org.br/noticias/como-enfrentar-os-desafios-da-natureza-e-do-clima-juntos-em-2025#link4" class="d-block image-container">
+                  <img class="img-fluid rounded shadow fixed-image" src="../Confraria_literaria/imagens/wri_logo.png" alt="WRI Brasil">
+                </a>
+              </div>
+              <div class="col-md-4 mb-3 mb-md-0">
+                <a href="https://www.todamateria.com.br/impactos-ambientais/" class="d-block image-container">
+                  <img class="img-fluid rounded shadow fixed-image" src="../Confraria_literaria/imagens/todamateria_logo.png" alt="Toda Matéria">
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="https://www.embrapa.br/meio-ambiente" class="d-block image-container">
+                  <img class="img-fluid rounded shadow fixed-image" src="../Confraria_literaria/imagens/embrapa_logo.png" alt="Embrapa">
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Barra lateral -->
+      <aside class="col-md-4 pt-4">
+        <div style="top: 2rem;">
+          <!-- Sobre -->
+          <section class="p-4 mb-4 rounded sobre-personalizado">
+            <h4 class="fst-italic text-white">Sobre o Blog</h4>
+            <img src="../Confraria_literaria/imagens/sobre_imagem_ghibi.png" class="img-fluid mb-3 rounded" alt="Sobre o blog">
+            <p class="mb-0 text-white">Este blog nasceu da paixão por informar, inspirar e transformar. Aqui, reunimos as principais notícias, análises e curiosidades sobre o meio ambiente, sustentabilidade, mudanças climáticas e tudo o que impacta o nosso planeta.</p>
+          </section>
+        </div>
+        <div style="top: 2rem;">
+          <!-- Marketing -->
+          <section class="p-4 mb-4 rounded sobre-personalizado">
+            <h4 class="fst-italic text-white">3º Ano do Colégio Objetivo:</h4>
+            <img src="../Confraria_literaria/imagens/objetivoverde_logo.png" class="img-fluid mb-3 rounded" alt="Colégio Objetivo">
+            <p class="mb-0 text-white">Nossa turma está unida em um projeto especial de preservação do meio ambiente, mostrando que com consciência, ação e colaboração podemos construir um futuro mais verde e sustentável para todos.</p>
+          </section>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Botão Voltar ao Topo -->
+  <a href="#" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- Rodapé -->
+  <footer class="py-5 text-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <img src="../Confraria_literaria/imagens/ConfrariaSiteLogo.png" alt="Confraria Literária" width="180" class="mb-4">
+          <p class="mb-4">"Olhe profundamente para a natureza, e então você entenderá tudo melhor."<br><small class="text-white">— Albert Einstein</small></p>    
+          <p class="small text-muted mb-0">&copy; 2025 Confraria Literária. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
+
+  <!-- Scripts Personalizados -->
+  <script>
+    // Botão voltar ao topo melhorado
+    window.addEventListener('scroll', function() {
+      const backToTop = document.querySelector('.back-to-top');
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    document.querySelector('.back-to-top').addEventListener('click', function(e) {
+      e.preventDefault();
+      // Animação de clique
+      this.classList.add('clicked');
+      setTimeout(() => this.classList.remove('clicked'), 600);
+      
+      // Rolagem suave
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+   // Ativar links ativos na navbar
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPage = location.pathname.split('/').pop();
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  navLinks.forEach(link => {
+    // Remove a classe 'active' de todos os itens primeiro
+    link.parentElement.classList.remove('active');
+    
+    // Verifica se o link corresponde à página atual
+    if (link.getAttribute('href') === currentPage) {
+      link.parentElement.classList.add('active');
+    }
+    
+    // Caso especial para a home (index.html ou teste.html)
+    if ((currentPage === 'index.html' || currentPage === 'index.html' || currentPage === '') && 
+        link.getAttribute('href') === 'index.html') {
+      link.parentElement.classList.add('active');
+    }
+  });
+});
+
+    // Animação de aparecimento suave
+    const animateOnScroll = () => {
+      document.querySelectorAll('.card-personalizado, .img-fluid, .blog-post').forEach(el => {
+        const elPosition = el.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+        
+        if (elPosition < screenPosition) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    // Inicializa animações
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.card-personalizado, .img-fluid, .blog-post').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      });
+      
+      setTimeout(() => animateOnScroll(), 300);
+    });
+
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
+</body>
+</html>

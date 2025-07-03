@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="pt-BR" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Confraria Literária</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../Confraria_literaria/imagens/Favcon.jpg" type="image/x-icon">
+    <style>
+      :root {
+        --verde-primario: #767a0f;
+        --verde-secundario: #8fa32b;
+        --verde-claro: #a4b849;
+        --bege: #f2f1e9;
+        --bege-escuro: #e6e3d5;
+        --marrom: #403a2f;
+        --dourado: #FFD700;
+        --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transicao: all 0.3s ease;
+      }
+
+      /* ===== ESTILOS GERAIS ===== */
+      body {
+          background-color: var(--bege);
+          font-family:'Times New Roman', Times, serif;
+          color: #333;
+          overflow-x: hidden;
+      }
+      h1 {
+        font-family: 'Frankfurter';
+      }
+      h2 {
+        font-family: 'Frankfurter';
+      }
+      h3 {
+        font-family: 'Frankfurter';
+      }
+     /* ===== NAVBAR OTIMIZADA PARA MOBILE ===== */
+     .navbar {
+          background-color: var(--verde-primario);
+          padding: 0.5rem 1rem;
+          box-shadow: var(--sombra);
+          position: sticky;
+          top: 0;
+          z-index: 1020;
+          min-height: 70px; /* Altura reduzida para mobile */
+          transition: all 0.3s ease;
+      }
+
+      .navbar-brand img {
+          width: 150px; /* Tamanho reduzido para mobile */
+          height: auto;
+          transition: var(--transicao);
+      }
+
+      .navbar-toggler {
+          border: none;
+          padding: 0.25rem 0.5rem;
+          font-size: 1.25rem;
+      }
+
+      .navbar-toggler:focus {
+          box-shadow: none;
+      }
+
+      .navbar-toggler-icon {
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+          width: 1.25em;
+          height: 1.25em;
+      }
+
+      .navbar-collapse {
+          background-color: var(--verde-primario);
+          padding: 0.5rem 1rem;
+          margin-top: 0.5rem;
+          border-radius: 0 0 10px 10px;
+      }
+
+      .nav-link {
+          color: white !important;
+          font-weight: 500;
+          padding: 0.75rem 0.5rem !important;
+          margin: 0.25rem 0;
+          position: relative;
+          font-size: 0.95rem;
+          display: block;
+          text-align: center;
+      }
+
+      .nav-item:not(.active) .nav-link:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 2px;
+          background: var(--dourado);
+          transition: var(--transicao);
+      }
+
+      .nav-item:not(.active) .nav-link:hover:before,
+      .nav-item:not(.active) .nav-link:focus:before {
+          width: 80%;
+      }
+
+      .nav-item.active .nav-link:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80%;
+          height: 2px;
+          background: var(--dourado);
+      }
+
+      /* Ajustes para tablets */
+      @media (min-width: 768px) {
+          .navbar {
+              padding: 0.75rem 1.5rem;
+              min-height: 80px;
+          }
+          
+          .navbar-brand img {
+              width: 170px;
+          }
+          
+          .nav-link {
+              padding: 0.5rem 1rem !important;
+              margin: 0 0.25rem;
+              display: inline-block;
+          }
+          
+          .nav-item:not(.active) .nav-link:before {
+              left: 0;
+              transform: none;
+          }
+          
+          .nav-item:not(.active) .nav-link:hover:before,
+          .nav-item:not(.active) .nav-link:focus:before {
+              width: 100%;
+          }
+          
+          .nav-item.active .nav-link:before {
+              left: 0;
+              transform: none;
+              width: 100%;
+          }
+      }
+
+      /* Ajustes para desktop */
+      @media (min-width: 992px) {
+          .navbar {
+              border-radius: 0 0 30px 30px;
+              padding: 0.75rem 2rem;
+          }
+          
+          .navbar-brand img {
+              width: 200px;
+          }
+          
+          .nav-link {
+              font-size: 1rem;
+              padding: 0.5rem 1.25rem !important;
+          }
+          
+          .navbar-collapse {
+              background-color: transparent;
+              padding: 0;
+              margin-top: 0;
+          }
+      }
+     
+      /* ===== CARROSSEL ===== */
+      .carousel {
+     
+          overflow: hidden;
+          margin-top: -30px; /* Corrige espaço branco */
+          position: relative;
+      }
+
+      .carousel-item {
+          transition: opacity 1s ease-in-out;
+          height: 80vh;
+          min-height: 500px;
+      }
+
+      .carousel-item img {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+      }
+
+      .carousel-caption {
+          bottom: 25%;
+          background: rgba(64, 58, 47, 0.85);
+          border-radius: 15px;
+          padding: 2rem;
+          max-width: 700px;
+          margin: 0 auto;
+          text-align: center;
+      }
+
+      .carousel-caption h1 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          color: white;
+      }
+
+      .carousel-caption p {
+          font-size: 1.25rem;
+          opacity: 0.9;
+      }
+
+      .carousel-indicators [data-bs-target] {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.5);
+          border: none;
+          transition: var(--transicao);
+      }
+
+      .carousel-indicators .active {
+          background-color: white;
+          width: 30px;
+          border-radius: 6px;
+      }
+
+      .carousel-control-prev, .carousel-control-next {
+          width: 5%;
+          opacity: 0.8;
+      }
+
+      .carousel-control-prev:hover, .carousel-control-next:hover {
+          opacity: 1;
+      }
+
+      /* ===== DESTAQUES ===== */
+      .destaques {
+          padding: 5rem 0;
+          background-color: var(--bege-escuro);
+      }
+
+      .card-destaque {
+          background: white;
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: var(--sombra);
+          transition: var(--transicao);
+          height: 100%;
+          border: none;
+      }
+
+      .card-destaque:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-img-top {
+          height: 250px;
+          object-fit: cover;
+          transition: var(--transicao);
+      }
+
+      .card-destaque:hover .card-img-top {
+          transform: scale(1.05);
+      }
+
+      .card-body {
+          padding: 1.5rem;
+      }
+
+      .card-title {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: var(--marrom);
+      }
+
+      .card-text {
+          color: #666;
+          margin-bottom: 1.5rem;
+      }
+
+      .btn-verde {
+          background-color: var(--verde-primario);
+          color: white;
+          border: none;
+          padding: 0.5rem 1.5rem;
+          border-radius: 50px;
+          transition: var(--transicao);
+      }
+
+      .btn-verde:hover {
+          background-color: var(--verde-secundario);
+          color: white;
+          transform: translateY(-2px);
+      }
+
+      /* ===== SOBRE ===== */
+      .sobre {
+          padding: 5rem 0;
+          background-color: var(--bege-escuro);
+      }
+
+      .sobre-img {
+          border-radius: 15px;
+          box-shadow: var(--sombra);
+          transition: var(--transicao);
+      }
+
+      .sobre-img:hover {
+          transform: scale(1.02);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+          background-color: var(--marrom);
+          color: white;
+          padding: 3rem 0 1.5rem;
+      }
+
+      .footer-logo {
+          max-width: 200px;
+          margin-bottom: 1.5rem;
+      }
+
+      .footer-links h5 {
+          color: var(--dourado);
+          margin-bottom: 1.5rem;
+          font-size: 1.25rem;
+      }
+
+      .footer-links ul {
+          list-style: none;
+          padding: 0;
+      }
+
+      .footer-links li {
+          margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+          color: white;
+          text-decoration: none;
+          transition: var(--transicao);
+      }
+
+      .footer-links a:hover {
+          color: var(--dourado);
+          padding-left: 5px;
+      }
+
+      .social-icons a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          color: white;
+          margin-right: 10px;
+          transition: var(--transicao);
+      }
+
+      .social-icons a:hover {
+          background-color: var(--dourado);
+          color: var(--marrom);
+          transform: translateY(-3px);
+      }
+
+      .copyright {
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          padding-top: 1.5rem;
+          margin-top: 2rem;
+          font-size: 0.9rem;
+      }
+
+       /* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  background: var(--verde-primario);
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--verde-secundario);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top i {
+  font-size: 1.5rem;
+}
+
+/* fonte do site */
+@font-face {
+        font-family:'frankfurter';
+        src: url(frankfurter.ttf), url(Frankfurter\ Medium\ Std\ Regular.otf) format ('opentype');
+        font-weight: normal;
+        font-size: normal;
+        letter-spacing: 2px;
+ }
+ 
+      /* ===== RESPONSIVIDADE ===== */
+      @media (max-width: 992px) {
+          .carousel-item {
+              height: 60vh;
+          }
+          
+          .carousel-caption {
+              bottom: 15%;
+              padding: 1.5rem;
+          }
+          
+          .carousel-caption h1 {
+              font-size: 2rem;
+          }
+          
+          .carousel-caption p {
+              font-size: 1rem;
+          }
+        }
+
+      @media (max-width: 768px) {
+          .navbar {
+              border-radius: 0;
+          }
+          
+          .carousel {
+              border-radius: 0;
+          }
+          
+          .carousel-item {
+              height: 50vh;
+              min-height: 400px;
+          }
+          
+          .carousel-caption {
+              bottom: 10%;
+              padding: 1rem;
+              width: 90%;
+          }
+          
+          .carousel-caption h1 {
+              font-size: 1.5rem;
+          }
+          
+          .chamada-principal h2 {
+              font-size: 2rem;
+          }
+          
+          .chamada-principal p {
+              font-size: 1rem;
+          }
+      }
+
+      @media (max-width: 576px) {
+          .carousel-item {
+              height: 40vh;
+              min-height: 300px;
+          }
+          
+          .carousel-caption {
+              bottom: 5%;
+          }
+          
+          .carousel-caption h1 {
+              font-size: 1.25rem;
+          }
+      }
+    </style>
+</head>
+<body>
+ <!-- Navbar Corrigida -->
+ <nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img width="200" src="imagens/ConfrariaSiteLogo.png" alt="Confraria Literária">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item active"> 
+          <a class="nav-link" href="#">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="noticias.html">NOTÍCIAS</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+  <!-- Carousel -->
+  <div id="mainCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">  
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="../Confraria_literaria/imagens/imagem_carousel1.png" alt="Primeiro slide">
+        <div class="carousel-caption">
+          <h1>COLETA DE LIXO</h1>
+          <p>Saiba como descartar seu lixo corretamente sem prejudicar o meio ambiente.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="../Confraria_literaria/imagens/carrosel2.png" alt="Segundo slide">
+        <div class="carousel-caption">
+          <h1>O que é sustentabilidade ambiental?</h1>
+          <p>A sustentabilidade ambiental, cujos objetivos são a preservação do meio ambiente e a conservação dos recursos naturais, é um dos pilares da sustentabilidade.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="../Confraria_literaria/imagens/carrosel3.png" alt="Terceiro slide">
+        <div class="carousel-caption">
+          <h1>Conecte-se com a natureza</h1>
+          <p>Descubra como pequenas ações podem fazer uma grande diferença na preservação do nosso planeta.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Destaques -->
+  <section class="destaques">
+    <div class="container">
+      <h2 class="section-title">COMO A TECNOLOGIA PODE AJUDAR O MEIO AMBIENTE</h2>
+      
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card card-destaque">
+            <img src="../Confraria_literaria/imagens/reciclagem_card.png" class="card-img-top" alt="Reciclagem">
+            <div class="card-body">
+              <h3 class="card-title">Recicle com Consciência</h3>
+              <p class="card-text">Aprenda a reciclar corretamente os materiais do seu dia a dia e contribua para um planeta mais limpo e sustentável.</p>
+              <a href="card1.html" class="btn btn-verde">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card card-destaque">
+            <img src="../Confraria_literaria/imagens/transporte_card.png" class="card-img-top" alt="Energia Solar">
+            <div class="card-body">
+              <h3 class="card-title">Inovações em Transporte Sustentável</h3>
+              <p class="card-text">Carros elétricos, trens solares e drones de entrega estão revolucionando o transporte sustentável, reduzindo emissões e criando um futuro mais limpo e eficiente.</p>
+              <a href="card3.html" class="btn btn-verde">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card card-destaque">
+            <img src="../Confraria_literaria/imagens/agricultura_card.png" class="card-img-top" alt="Agricultura Sustentável">
+            <div class="card-body">
+              <h3 class="card-title">Agricultura Sustentável</h3>
+              <p class="card-text">Conheça técnicas agrícolas que preservam o meio ambiente enquanto garantem a produção de alimentos saudáveis.</p>
+              <a href="card2.html" class="btn btn-verde">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="sobre">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img  src="../Confraria_literaria/imagens/sobrennnos.jpg" alt="Sobre a Confraria Literária" class="img-fluid sobre-img">
+        </div>
+        <div class="col-lg-6">
+          <h2 class="section-title text-start">SOBRE NÓS</h2>
+          <p class="lead">A Confraria Literária é um projeto dedicado à educação ambiental através da literatura e da ação prática. Nosso objetivo é conscientizar e mobilizar pessoas para a importância da preservação do meio ambiente.</p>
+          <p>Acreditamos que a mudança começa com informação e que cada pequena ação pode contribuir para um futuro mais sustentável. Nossos estandes são espaços de aprendizado, discussão e prática, onde todos são bem-vindos para participar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botão Voltar ao Topo -->
+  <a href="#" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
+  
+  <!-- Scripts Personalizados -->
+
+<script>
+  // Botão voltar ao topo - versão melhorada (funciona em todas as páginas)
+  window.addEventListener('scroll', function() {
+    const backToTop = document.querySelector('.back-to-top');
+    if (window.pageYOffset > 300) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
+  });
+
+  // Adicionando a função de clique com animação mais suave
+  document.querySelector('.back-to-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // Adiciona uma animação de clique
+    this.classList.add('clicked');
+    setTimeout(() => {
+      this.classList.remove('clicked');
+    }, 300);
+  });
+    
+  // Suavizar rolagem para links âncora (funciona em todas as páginas)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Ativar item ativo na navbar (funciona em todas as páginas)
+  document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.parentElement.classList.add('active');
+      }
+    });
+
+    // VERIFICA SE ESTAMOS NA PÁGINA HOME PARA ATIVAR AS ANIMAÇÕES
+    if (currentPage === 'index.html' || currentPage === 'index.html' || currentPage === '') {
+      // Animação dos cards ao rolar a página (SÓ NA HOME)
+      const animateOnScroll = function() {
+        const cards = document.querySelectorAll('.info-card, .step-box');
+        cards.forEach(card => {
+          const cardPosition = card.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+          
+          if (cardPosition < screenPosition) {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }
+        });
+      };
+
+      // Inicializa as animações (SÓ NA HOME)
+      const cards = document.querySelectorAll('.info-card, .step-box');
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      });
+      
+      animateOnScroll();
+      window.addEventListener('scroll', animateOnScroll);
+    }
+  });
+</script>
+</body>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <img src="../Confraria_literaria/imagens/doacoes_imagem.jpeg" alt="Confraria Literária" class="footer-logo">
+          <p>Seu apoio transforma páginas em ações!<br>Escaneie para contribuir com nosso projeto ambiental!</p>
+         
+        </div>
+        
+        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+          <div class="footer-links">
+            <h5>Links</h5>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="noticias.html">Notícias</a></li>
+              <li><a href="card1.html">Recicle com Consciência</a></li>
+              <li><a href="card3.html">Inovações em Transporte Sustentável</a></li>
+              <li><a href="card2.html">Agricultura Sustentável</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <div class="footer-links">
+            <h5>Integrantes</h5>
+            <ul>
+              <li><a href="#">Gabriel Souza (DEV)</a></li>
+              <li><a href="#">Gabriel Oliveira (DEV)</a></li>
+              <li><a href="#">Gabriel Carvalho (DSG)</a></li>
+              <li><a href="#">Rafael Olegário</a></li>
+              <li><a href="#">Érika Flávia</a></li>          
+              <li><a href="#">Danton Carlos</a></li>
+              <li><a href="#">Luís Otávio</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-links">
+            <h5>Contatos</h5>
+            <div class="social-icons mt-3">
+              <br>
+              <a href="https://www.instagram.com/_.souzawr._?igsh=MXd1M3g3M3JrYWoyaw=="><i class="bi bi-instagram"> </i></a> Gabriel de Souza
+            </br>
+            <br>
+              <a href="https://www.instagram.com/bielxll7_?igsh=M2h3NWhnczZ1Z25v"><i class="bi bi-instagram"></i></a> Gabriel Oliveira
+          </br>
+          <br>
+              <a href="https://www.instagram.com/gabrielcarvalho.dsg?igsh=cm96bzdnNDNzODN5"><i class="bi bi-instagram"></i></a> Gabriel Carvalho
+         </br>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright text-center">
+        <p>&copy; 2025 Confraria Literária. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</html>

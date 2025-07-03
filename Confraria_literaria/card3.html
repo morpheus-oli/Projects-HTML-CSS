@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="pt-BR" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inovações em Transporte Sustentável | Confraria Literária</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+   <!-- Fontes do Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="../Confraria_literaria/imagens/Favcon.jpg" type="image/x-icon">
+    <style>
+
+   /* ===== ESTILOS GERAIS ===== */
+   @font-face {
+      font-family: 'frankfurter';
+      src: url('frankfurter.otf') format('opentype'),
+           url('Frankfurter Medium Std Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+  :root {
+    --verde-primario: #767a0f;
+    --verde-secundario: #8fa32b;
+    --verde-claro: #a4b849;
+    --bege: #f2f1e9;
+    --bege-escuro: #e6e3d5;
+    --marrom: #403a2f;
+    --dourado: #FFD700;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --sombra-destaque: 0 10px 20px rgba(0,0,0,0.15);
+    --transicao: all 0.3s ease;
+  }
+  body {
+      background-color: var(--bege);
+      font-family:'Times New Roman', Times, serif;
+      color: #333;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      font-family: 'Frankfurter';
+    }
+
+    h3, h4, h5, h6 {
+      font-family:'Times New Roman', Times, serif;
+      color: var(--marrom);
+    }
+  
+      .texto-justificado {
+          text-align: justify;
+          text-justify: inter-word;
+      }
+
+      .section-title {
+          position: relative;
+          margin-bottom: 3rem;
+          text-align: center;
+      }
+
+      .section-title:after {
+          content: '';
+          display: block;
+          width: 80px;
+          height: 4px;
+          background: var(--verde-primario);
+          margin: 1rem auto;
+          border-radius: 2px;
+      }
+
+       /* ===== NAVBAR OTIMIZADA PARA MOBILE ===== */
+     .navbar {
+          background: var(--verde-primario);
+          padding: 0.5rem 1rem;
+          box-shadow: var(--sombra);
+          position: sticky;
+          top: 0;
+          z-index: 1020;
+          min-height: 70px;
+          transition: all 0.3s ease;
+      }
+
+      .navbar-brand img {
+          width: 150px;
+          height: auto;
+          transition: var(--transicao);
+      }
+
+      .navbar-toggler {
+          border: none;
+          padding: 0.25rem 0.5rem;
+          font-size: 1.25rem;
+      }
+
+      .navbar-toggler:focus {
+          box-shadow: none;
+      }
+
+      .navbar-toggler-icon {
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+          width: 1.25em;
+          height: 1.25em;
+      }
+
+      .navbar-collapse {
+          background-color: var(--verde-primario);
+          padding: 0.5rem 1rem;
+          margin-top: 0.5rem;
+          border-radius: 0 0 10px 10px;
+      }
+
+      .nav-link {
+          color: white !important;
+          font-weight: 500;
+          padding: 0.75rem 0.5rem !important;
+          margin: 0.25rem 0;
+          position: relative;
+          font-size: 0.95rem;
+          display: block;
+          text-align: center;
+      }
+
+      .nav-item:not(.active) .nav-link:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 2px;
+          background: var(--dourado);
+          transition: var(--transicao);
+      }
+
+      .nav-item:not(.active) .nav-link:hover:before,
+      .nav-item:not(.active) .nav-link:focus:before {
+          width: 80%;
+      }
+
+      .nav-item.active .nav-link:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80%;
+          height: 2px;
+          background: var(--dourado);
+      }
+
+      /* Ajustes para tablets */
+      @media (min-width: 768px) {
+          .navbar {
+              padding: 0.75rem 1.5rem;
+              min-height: 80px;
+          }
+          
+          .navbar-brand img {
+              width: 170px;
+          }
+          
+          .nav-link {
+              padding: 0.5rem 1rem !important;
+              margin: 0 0.25rem;
+              display: inline-block;
+          }
+          
+          .nav-item:not(.active) .nav-link:before {
+              left: 0;
+              transform: none;
+          }
+          
+          .nav-item:not(.active) .nav-link:hover:before,
+          .nav-item:not(.active) .nav-link:focus:before {
+              width: 100%;
+          }
+          
+          .nav-item.active .nav-link:before {
+              left: 0;
+              transform: none;
+              width: 100%;
+          }
+      }
+
+      /* Ajustes para desktop */
+      @media (min-width: 992px) {
+          .navbar {
+              border-radius: 0 0 30px 30px;
+              padding: 0.75rem 2rem;
+          }
+          
+          .navbar-brand img {
+              width: 200px;
+          }
+          
+          .nav-link {
+              font-size: 1rem;
+              padding: 0.5rem 1.25rem !important;
+          }
+          
+          .navbar-collapse {
+              background-color: transparent;
+              padding: 0;
+              margin-top: 0;
+          }
+      }
+
+      /* ===== HERO SECTION ===== */
+      .hero-section {
+          background: linear-gradient(rgba(64, 58, 47, 0.85), rgba(64, 58, 47, 0.85)),
+                      url('../Confraria_literaria/imagens/card3.1.jpg');
+                      
+          background-size: cover;
+          background-position: center;
+          color: white;
+          padding: 8rem 0 6rem;
+          text-align: center;
+          margin-top: -1px;
+          position: relative;
+          z-index: 1;
+          margin-top: -29px;
+      }
+
+      .hero-section h1 {
+          color: white;
+          font-size: 3rem;
+          margin-bottom: 1.5rem;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
+
+      .hero-section p {
+          font-size: 1.25rem;
+          max-width: 700px;
+          margin: 0 auto 2rem;
+          opacity: 0.9;
+      }
+
+      /* ===== CONTENT SECTION ===== */
+      .content-section {
+          padding: 5rem 0;
+          position: relative;
+      }
+
+      .info-card {
+          background: white;
+          border-radius: 15px;
+          box-shadow: var(--sombra);
+          padding: 2.5rem;
+          margin-bottom: 2rem;
+          transition: var(--transicao);
+          height: 100%;
+          border: none;
+      }
+
+      .info-card:hover {
+          transform: translateY(-10px);
+          box-shadow: var(--sombra-destaque);
+      }
+
+      .info-card h2 {
+          margin-bottom: 1.5rem;
+          color: var(--verde-primario);
+          display: flex;
+          align-items: center;
+      }
+
+      .info-card h2 i {
+          margin-right: 0.75rem;
+      }
+
+      .img-container {
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: var(--sombra);
+          transition: var(--transicao);
+          height: 100%;
+      }
+
+      .img-container:hover {
+          box-shadow: var(--sombra-destaque);
+      }
+
+      .img-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: var(--transicao);
+      }
+
+      .img-container:hover img {
+          transform: scale(1.05);
+      }
+
+      /* ===== STEP BOXES ===== */
+      .step-box {
+          background: var(--verde-primario);
+          color: white;
+          border-radius: 12px;
+          padding: 1.75rem;
+          margin-bottom: 1.5rem;
+          transition: var(--transicao);
+      }
+
+      .step-box:hover {
+          background: var(--verde-secundario);
+          transform: translateY(-5px);
+      }
+
+      .step-number {
+          background: white;
+          color: var(--verde-primario);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          margin-right: 1rem;
+          flex-shrink: 0;
+      }
+
+      .step-content {
+          flex-grow: 1;
+      }
+
+      .step-box h5 {
+          color: white;
+          margin-bottom: 0.5rem;
+      }
+
+      /* ===== BOTÕES ===== */
+      .btn-verde {
+          background-color: var(--verde-primario);
+          color: white;
+          border: none;
+          padding: 0.75rem 2rem;
+          border-radius: 50px;
+          transition: var(--transicao);
+          font-weight: 500;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .btn-verde:hover {
+          background-color: var(--verde-secundario);
+          color: white;
+          transform: translateY(-3px);
+          box-shadow: var(--sombra);
+      }
+
+      .btn-verde i {
+          margin-right: 0.5rem;
+      }
+
+     /* ===== FOOTER ===== */
+     footer {
+          background-color: var(--marrom);
+          color: white;
+          padding: 4rem 0 1.5rem;
+      }
+
+      .footer-logo {
+          max-width: 200px;
+          margin-bottom: 1.5rem;
+      }
+
+      .footer-links h5 {
+          color: var(--dourado);
+          margin-bottom: 1.5rem;
+          font-size: 1.25rem;
+      }
+
+      .footer-links ul {
+          list-style: none;
+          padding: 0;
+      }
+
+      .footer-links li {
+          margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+          color: white;
+          text-decoration: none;
+          transition: var(--transicao);
+      }
+
+      .footer-links a:hover {
+          color: var(--dourado);
+          padding-left: 5px;
+      }
+
+      .social-icons a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          color: white;
+          margin-right: 10px;
+          transition: var(--transicao);
+      }
+
+      .social-icons a:hover {
+          background-color: var(--dourado);
+          color: var(--marrom);
+          transform: translateY(-3px);
+      }
+
+      .copyright {
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          padding-top: 1.5rem;
+          margin-top: 2rem;
+          font-size: 0.9rem;
+      }
+
+      /* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  background: var(--verde-primario);
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--verde-secundario);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top i {
+  font-size: 1.5rem;
+}    
+
+      /* ===== RESPONSIVIDADE ===== */
+      @media (max-width: 992px) {
+          .hero-section {
+              padding: 6rem 0 4rem;
+          }
+          
+          .hero-section h1 {
+              font-size: 2.5rem;
+          }
+      }
+
+      @media (max-width: 768px) {
+          .navbar {
+              border-radius: 0;
+          }
+          
+          .hero-section {
+              padding: 5rem 0 3rem;
+          }
+          
+          .hero-section h1 {
+              font-size: 2rem;
+          }
+          
+          .hero-section p {
+              font-size: 1rem;
+          }
+          
+          .info-card {
+              padding: 1.5rem;
+          }
+      }
+
+      @media (max-width: 576px) {
+          .hero-section {
+              padding: 4rem 0 2rem;
+          }
+          
+          .hero-section h1 {
+              font-size: 1.75rem;
+          }
+          
+          .section-title {
+              margin-bottom: 2rem;
+          }
+      }
+      
+      /* Estilos específicos para transporte */
+      .tech-feature {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 1.5rem;
+      }
+      
+      .tech-icon {
+          background-color: var(--verde-claro);
+          color: white;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 1rem;
+          flex-shrink: 0;
+      }
+      
+      .tech-content {
+          flex-grow: 1;
+      }
+      
+      .benefit-card {
+          border-left: 4px solid var(--verde-primario);
+          padding-left: 1rem;
+          margin-bottom: 1.5rem;
+      }
+      
+      .vehicle-card {
+          border: 1px solid rgba(0,0,0,0.1);
+          border-radius: 10px;
+          padding: 1.5rem;
+          margin-bottom: 1.5rem;
+          transition: var(--transicao);
+      }
+      
+      .vehicle-card:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--sombra);
+      }
+      
+      .vehicle-card img {
+          border-radius: 8px;
+          margin-bottom: 1rem;
+      }
+    </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img width="200" src="imagens/ConfrariaSiteLogo.png" alt="Confraria Literária">
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"> 
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="noticias.html">NOTÍCIAS</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="display-4 mb-4">Inovações em Transporte Sustentável</h1>
+      <p class="lead mb-5">Descubra as tecnologias e soluções que estão revolucionando a mobilidade com menor impacto ambiental</p>
+    </div>
+  </section>
+
+  <!-- Importância do Transporte Sustentável -->
+  <section class="content-section">
+    <div class="container">
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="info-card">
+            <h2><i class="bi bi-car-front"></i> Por que Transporte Sustentável?</h2>
+            <p class="lead">O setor de transportes é responsável por cerca de 25% das emissões globais de CO₂, sendo um dos principais contribuintes para as mudanças climáticas.</p>
+            <p>Adotar soluções sustentáveis no transporte é essencial para:</p>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Reduzir a poluição do ar e emissões de gases de efeito estufa</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Diminuir a dependência de combustíveis fósseis</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Melhorar a qualidade de vida nas cidades</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Reduzir congestionamentos e tempo de deslocamento</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i> Promover saúde pública através de meios de transporte ativos</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="img-container">
+            <img src="../Confraria_literaria/imagens/card3.1.jpg" alt="Importância do transporte sustentável" class="img-fluid">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tecnologias Inovadoras -->
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+          <div class="info-card">
+            <h2><i class="bi bi-lightning-charge"></i> Tecnologias Emergentes</h2>
+            <p>As inovações tecnológicas estão transformando rapidamente o setor de transportes:</p>
+            
+            <div class="tech-feature">
+              <div class="tech-icon">
+                <i class="bi bi-ev-station"></i>
+              </div>
+              <div class="tech-content">
+                <h5>Veículos Elétricos (VEs)</h5>
+                <p>Carros, ônibus e caminhões movidos a bateria com zero emissões diretas e menor custo de operação.</p>
+              </div>
+            </div>
+            
+            <div class="tech-feature">
+              <div class="tech-icon">
+                <i class="bi bi-fuel-pump"></i>
+              </div>
+              <div class="tech-content">
+                <h5>Combustíveis Alternativos</h5>
+                <p>Hidrogênio verde, biocombustíveis avançados e e-fuels produzidos com energia renovável.</p>
+              </div>
+            </div>
+            
+            <div class="tech-feature">
+              <div class="tech-icon">
+                <i class="bi bi-bicycle"></i>
+              </div>
+              <div class="tech-content">
+                <h5>Mobilidade Ativa</h5>
+                <p>Infraestrutura para bicicletas, patinetes elétricos e sistemas de compartilhamento de veículos leves.</p>
+              </div>
+            </div>
+            
+            <div class="tech-feature">
+              <div class="tech-icon">
+                <i class="bi bi-cpu"></i>
+              </div>
+              <div class="tech-content">
+                <h5>Transporte Inteligente</h5>
+                <p>Sistemas de IA para otimização de rotas, redução de congestionamentos e gestão de frotas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="img-container">
+            <img src="../Confraria_literaria/imagens/card3.2.jpg" alt="Tecnologias de transporte sustentável" class="img-fluid">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tipos de Veículos Sustentáveis -->
+      <div id="veiculos" class="row mb-5">
+        <div class="col-12">
+          <h2 class="section-title"><i class="bi bi-car-front me-3"></i>Veículos Sustentáveis</h2>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="vehicle-card">
+            <img src="../Confraria_literaria/imagens/card3.4.jpg" alt="Carro Elétrico" class="img-fluid">
+            <h4>Carros Elétricos</h4>
+            <div class="benefit-card">
+              <p>Zero emissões diretas, baixo custo de manutenção e desempenho superior. Modelos atuais já superam 400km de autonomia.</p>
+            </div>
+            <a href="https://www.agoramotors.com.br/guia-completo-sobre-carros-eletricos/" class="btn btn-verde">Saiba mais</a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="vehicle-card">
+            <img src="../Confraria_literaria/imagens/card3.3.jpg" alt="Ônibus Elétrico" class="img-fluid">
+            <h4>Ônibus Elétricos</h4>
+            <div class="benefit-card">
+              <p>Redução de 60-80% nas emissões mesmo considerando a geração de eletricidade, mais silenciosos e confortáveis.</p>
+            </div>
+            <a href="https://voolta.com.br/blog/onibus-eletricos-beneficios-desafios-perspectivas/" class="btn btn-verde">Saiba mais</a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="vehicle-card">
+            <img src="../Confraria_literaria/imagens/card3.5.jpg" alt="Bicicleta Elétrica" class="img-fluid">
+            <h4>Bicicletas Elétricas</h4>
+            <div class="benefit-card">
+              <p>Solução ideal para deslocamentos urbanos curtos e médios, combinando exercício com assistência elétrica quando necessário.</p>
+            </div>
+            <a href="https://olhardigital.com.br/2025/04/24/carros-e-tecnologia/voce-sabe-como-funcionam-as-bicicletas-eletricas-entenda-tudo-sobre-o-meio-de-transporte/#:~:text=Saiba%20como%20funciona%20uma%20bicicleta%20el%C3%A9trica%2C%20seus%20componentes%2C,seguran%C3%A7a%20com%20senha%20e%20alarme%20sonoro%20%28Imagem%3A%20Aventon%2FReprodu%C3%A7%C3%A3o%29" class="btn btn-verde">Saiba mais</a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="vehicle-card">
+            <img src="../Confraria_literaria/imagens/card3.6.jpg" alt="Trem a Hidrogênio" class="img-fluid">
+            <h4>Trens a Hidrogênio</h4>
+            <div class="benefit-card">
+              <p>Operam em rotas não eletrificadas emitindo apenas vapor d'água, já em operação em vários países europeus.</p>
+            </div>
+            <a href="https://g1.globo.com/mundo/noticia/2022/09/17/trem-movido-a-hidrogenio-comeca-a-ser-testado-na-alemanha.ghtml" class="btn btn-verde">Saiba mais</a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="vehicle-card">
+            <img src="../Confraria_literaria/imagens/card3.7.jpg" alt="Caminhão Elétrico" class="img-fluid">
+            <h4>Caminhões Elétricos</h4>
+            <div class="benefit-card">
+              <p>Para entregas urbanas e regionais, com redução significativa de custos operacionais e ruído.</p>
+            </div>
+            <a href="https://voolta.com.br/blog/caminhoes-eletricos-brasil-avancos-beneficios-perspectivas/" class="btn btn-verde">Saiba mais</a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="vehicle-card">
+            <img src="../Confraria_literaria/imagens/card3.8.jpg" alt="Transporte Aquaviário Sustentável" class="img-fluid">
+            <h4>Transporte Aquaviário Verde</h4>
+            <div class="benefit-card">
+              <p>Barcos e navios movidos a eletricidade, hidrogênio ou biocombustíveis para reduzir impactos nos oceanos.</p>
+            </div>
+            <a href="https://www.conjur.com.br/2024-dez-02/solucoes-para-a-descarbonizacao-do-setor-aquaviario-brasileiro-perspectivas-e-implicacoes/" class="btn btn-verde">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Como Contribuir -->
+      <div class="row">
+        <div class="col-12 mb-4">
+          <h2 class="section-title"><i class="bi bi-people me-3"></i>Como Você Pode Contribuir</h2>
+        </div>
+        
+        <div class="col-lg-6 mb-4">
+          <div class="info-card">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-bus-front fs-3 text-success me-3"></i>
+                  <div>
+                    <h5>Opte por Transporte Público</h5>
+                    <p class="small">Prefira ônibus, metrôs e trens, especialmente os movidos a energia limpa.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-bicycle fs-3 text-success me-3"></i>
+                  <div>
+                    <h5>Mobilidade Ativa</h5>
+                    <p class="small">Para distâncias curtas, caminhe ou use bicicleta (convencional ou elétrica).</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-car-front fs-3 text-success me-3"></i>
+                  <div>
+                    <h5>Carona Solidária</h5>
+                    <p class="small">Compartilhe caronas para reduzir o número de veículos nas ruas.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-ev-front fs-3 text-success me-3"></i>
+                  <div>
+                    <h5>Considere um VE</h5>
+                    <p class="small">Na próxima compra de veículo, avalie modelos elétricos ou híbridos.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 mb-4">
+          <div class="info-card">
+            <h3>Iniciativas Globais</h3>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Cidades Carbono Zero
+                <span class="badge bg-success">2050</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Proibição de motores a combustão
+                <span class="badge bg-success">2035+</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Acordo de Paris - Transportes
+                <a  href="https://web.bndes.gov.br/bib/jspui/handle/1408/11756" class="btn btn-sm btn-verde">Ver</a>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Programa de Incentivo a VEs no Brasil
+                <a href="https://www.gov.br" class="btn btn-sm btn-verde">Ver</a>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Semana da Mobilidade
+                <span class="badge bg-success">Set/Anual</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botão Voltar ao Topo -->
+  <a href="#" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
+  
+  <!-- Scripts Personalizados -->
+  <script>
+  // Botão voltar ao topo - versão melhorada
+window.addEventListener('scroll', function() {
+  const backToTop = document.querySelector('.back-to-top');
+  if (window.pageYOffset > 300) {
+    backToTop.classList.add('show');
+  } else {
+    backToTop.classList.remove('show');
+  }
+});
+
+// Adicionando a função de clique com animação mais suave
+document.querySelector('.back-to-top').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  
+  // Adiciona uma animação de clique
+  this.classList.add('clicked');
+  setTimeout(() => {
+    this.classList.remove('clicked');
+  }, 300);
+});
+    
+    // Suavizar rolagem para links âncora
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Ativar item ativo na navbar
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.parentElement.classList.add('active');
+        }
+      });
+    });
+
+    // Animação dos cards ao rolar a página
+    const animateOnScroll = function() {
+      const cards = document.querySelectorAll('.info-card, .step-box, .tech-feature, .vehicle-card');
+      cards.forEach(card => {
+        const cardPosition = card.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (cardPosition < screenPosition) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    // Inicializa as animações
+    window.addEventListener('load', function() {
+      const cards = document.querySelectorAll('.info-card, .step-box, .tech-feature, .vehicle-card');
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      });
+      
+      animateOnScroll();
+    });
+
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
+
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <img src="../Confraria_literaria/imagens/doacoes_imagem.jpeg" alt="Confraria Literária" class="footer-logo">
+          <p>Seu apoio transforma páginas em ações!<br>Escaneie para contribuir com nosso projeto ambiental!</p>
+         
+        </div>
+        
+        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+          <div class="footer-links">
+            <h5>Links</h5>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="noticias.html">Notícias</a></li>
+              <li><a href="card1.html">Recicle com Consciência</a></li>
+              <li><a href="card3.html">Inovações em Transporte Sustentável</a></li>
+              <li><a href="card2.html">Agricultura Sustentável</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <div class="footer-links">
+            <h5>Integrantes</h5>
+            <ul>
+              <li><a href="#">Gabriel Souza (DEV)</a></li>
+              <li><a href="#">Gabriel Oliveira (DEV)</a></li>
+              <li><a href="#">Gabriel Carvalho (DSG)</a></li>
+              <li><a href="#">Rafael Olegário</a></li>
+              <li><a href="#">Érika Flávia</a></li>          
+              <li><a href="#">Danton Carlos</a></li>
+              <li><a href="#">Luís Otávio</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-links">
+            <h5>Contatos</h5>
+            <div class="social-icons mt-3">
+              <br>
+              <a href="https://www.instagram.com/_.souzawr._?igsh=MXd1M3g3M3JrYWoyaw=="><i class="bi bi-instagram"> </i></a> Gabriel de Souza
+            </br>
+            <br>
+              <a href="https://www.instagram.com/bielxll7_?igsh=M2h3NWhnczZ1Z25v"><i class="bi bi-instagram"></i></a> Gabriel Oliveira
+          </br>
+          <br>
+              <a href="https://www.instagram.com/gabrielcarvalho.dsg?igsh=cm96bzdnNDNzODN5"><i class="bi bi-instagram"></i></a> Gabriel Carvalho
+         </br>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright text-center">
+        <p>&copy; 2025 Confraria Literária. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</body>

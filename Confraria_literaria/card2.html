@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="pt-BR" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tecnologia na Agricultura Sustentável | Confraria Literária</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../Confraria_literaria/imagens/Favcon.jpg" type="image/x-icon">
+    <style>
+      @font-face {
+  font-family: 'frankfurter';
+  src: url('frankfurter.ttf') format('truetype'),
+       url('Frankfurter Medium Std Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+      :root {
+        --verde-primario: #767a0f;
+        --verde-secundario: #8fa32b;
+        --verde-claro: #a4b849;
+        --bege: #f2f1e9;
+        --bege-escuro: #e6e3d5;
+        --marrom: #403a2f;
+        --dourado: #FFD700;
+        --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --sombra-destaque: 0 10px 20px rgba(0,0,0,0.15);
+        --transicao: all 0.3s ease;
+      }
+
+      /* ===== ESTILOS GERAIS ===== */
+      body {
+          background-color: var(--bege);
+          font-family:'Times New Roman', Times, serif;
+          color: #333;
+          overflow-x: hidden;
+      }
+
+      h1, h2 {
+        font-family: 'frankfurter';
+      }
+     h3, h4, h5, h6 {
+          font-family:'Times New Roman', Times, serif ;
+          color: var(--marrom);
+      }
+
+      .texto-justificado {
+          text-align: justify;
+          text-justify: inter-word;
+      }
+
+      .section-title {
+          position: relative;
+          margin-bottom: 3rem;
+          text-align: center;
+      }
+
+      .section-title:after {
+          content: '';
+          display: block;
+          width: 80px;
+          height: 4px;
+          background: var(--verde-primario);
+          margin: 1rem auto;
+          border-radius: 2px;
+      }
+
+       /* ===== NAVBAR OTIMIZADA PARA MOBILE ===== */
+     .navbar {
+          background-color: var(--verde-primario);
+          padding: 0.5rem 1rem;
+          box-shadow: var(--sombra);
+          position: sticky;
+          top: 0;
+          z-index: 1020;
+          min-height: 70px; /* Altura reduzida para mobile */
+          transition: all 0.3s ease;
+      }
+
+      .navbar-brand img {
+          width: 150px; /* Tamanho reduzido para mobile */
+          height: auto;
+          transition: var(--transicao);
+      }
+
+      .navbar-toggler {
+          border: none;
+          padding: 0.25rem 0.5rem;
+          font-size: 1.25rem;
+      }
+
+      .navbar-toggler:focus {
+          box-shadow: none;
+      }
+
+      .navbar-toggler-icon {
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+          width: 1.25em;
+          height: 1.25em;
+      }
+
+      .navbar-collapse {
+          background-color: var(--verde-primario);
+          padding: 0.5rem 1rem;
+          margin-top: 0.5rem;
+          border-radius: 0 0 10px 10px;
+      }
+
+      .nav-link {
+          color: white !important;
+          font-weight: 500;
+          padding: 0.75rem 0.5rem !important;
+          margin: 0.25rem 0;
+          position: relative;
+          font-size: 0.95rem;
+          display: block;
+          text-align: center;
+      }
+
+      .nav-item:not(.active) .nav-link:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 2px;
+          background: var(--dourado);
+          transition: var(--transicao);
+      }
+
+      .nav-item:not(.active) .nav-link:hover:before,
+      .nav-item:not(.active) .nav-link:focus:before {
+          width: 80%;
+      }
+
+      .nav-item.active .nav-link:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80%;
+          height: 2px;
+          background: var(--dourado);
+      }
+
+      /* Ajustes para tablets */
+      @media (min-width: 768px) {
+          .navbar {
+              padding: 0.75rem 1.5rem;
+              min-height: 80px;
+          }
+          
+          .navbar-brand img {
+              width: 170px;
+          }
+          
+          .nav-link {
+              padding: 0.5rem 1rem !important;
+              margin: 0 0.25rem;
+              display: inline-block;
+          }
+          
+          .nav-item:not(.active) .nav-link:before {
+              left: 0;
+              transform: none;
+          }
+          
+          .nav-item:not(.active) .nav-link:hover:before,
+          .nav-item:not(.active) .nav-link:focus:before {
+              width: 100%;
+          }
+          
+          .nav-item.active .nav-link:before {
+              left: 0;
+              transform: none;
+              width: 100%;
+          }
+      }
+
+      /* Ajustes para desktop */
+      @media (min-width: 992px) {
+          .navbar {
+              border-radius: 0 0 30px 30px;
+              padding: 0.75rem 2rem;
+          }
+          
+          .navbar-brand img {
+              width: 200px;
+          }
+          
+          .nav-link {
+              font-size: 1rem;
+              padding: 0.5rem 1.25rem !important;
+          }
+          
+          .navbar-collapse {
+              background-color: transparent;
+              padding: 0;
+              margin-top: 0;
+          }
+      }
+
+      /* ===== HERO SECTION ===== */
+      .hero-section {
+          background: linear-gradient(rgba(64, 58, 47, 0.85), rgba(64, 58, 47, 0.85)), 
+                      url('../Confraria_literaria/imagens/primeiraimagem.jpg');
+          background-size: cover;
+          background-position: center;
+          color: white;
+          padding: 8rem 0 6rem;
+          text-align: center;
+          margin-top: -1px;
+          position: relative;
+          z-index: 1;
+          margin-top: -29px;
+          height: 20x;
+      }
+
+      .hero-section h1 {
+          color: white;
+          font-size: 3rem;
+          margin-bottom: 1.5rem;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
+
+      .hero-section p {
+          font-size: 1.25rem;
+          max-width: 700px;
+          margin: 0 auto 2rem;
+          opacity: 0.9;
+      }
+
+      /* ===== CONTENT SECTION ===== */
+      .content-section {
+          padding: 5rem 0;
+          position: relative;
+      }
+
+      .info-card {
+          background: white;
+          border-radius: 15px;
+          box-shadow: var(--sombra);
+          padding: 2.5rem;
+          margin-bottom: 2rem;
+          transition: var(--transicao);
+          height: 100%;
+          border: none;
+      }
+
+      .info-card:hover {
+          transform: translateY(-10px);
+          box-shadow: var(--sombra-destaque);
+      }
+
+      .info-card h2 {
+          margin-bottom: 1.5rem;
+          color: var(--verde-primario);
+          display: flex;
+          align-items: center;
+      }
+
+      .info-card h2 i {
+          margin-right: 0.75rem;
+      }
+
+      .img-container {
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: var(--sombra);
+          transition: var(--transicao);
+          height: 100%;
+      }
+
+      .img-container:hover {
+          box-shadow: var(--sombra-destaque);
+      }
+
+      .img-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: var(--transicao);
+      }
+
+      .img-container:hover img {
+          transform: scale(1.05);
+      }
+
+      /* ===== STEP BOXES ===== */
+      .step-box {
+          background: var(--verde-primario);
+          color: white;
+          border-radius: 12px;
+          padding: 1.75rem;
+          margin-bottom: 1.5rem;
+          transition: var(--transicao);
+      }
+
+      .step-box:hover {
+          background: var(--verde-secundario);
+          transform: translateY(-5px);
+      }
+
+      .step-number {
+          background: white;
+          color: var(--verde-primario);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          margin-right: 1rem;
+          flex-shrink: 0;
+      }
+
+      .step-content {
+          flex-grow: 1;
+      }
+
+      .step-box h5 {
+          color: white;
+          margin-bottom: 0.5rem;
+      }
+
+      /* ===== BOTÕES ===== */
+      .btn-verde {
+          background-color: var(--verde-primario);
+          color: white;
+          border: none;
+          padding: 0.75rem 2rem;
+          border-radius: 50px;
+          transition: var(--transicao);
+          font-weight: 500;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .btn-verde:hover {
+          background-color: var(--verde-secundario);
+          color: white;
+          transform: translateY(-3px);
+          box-shadow: var(--sombra);
+      }
+
+      .btn-verde i {
+          margin-right: 0.5rem;
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+          background-color: var(--marrom);
+          color: white;
+          padding: 4rem 0 1.5rem;
+      }
+
+      .footer-logo {
+          max-width: 200px;
+          margin-bottom: 1.5rem;
+      }
+
+      .footer-links h5 {
+          color: var(--dourado);
+          margin-bottom: 1.5rem;
+          font-size: 1.25rem;
+      }
+
+      .footer-links ul {
+          list-style: none;
+          padding: 0;
+      }
+
+      .footer-links li {
+          margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+          color: white;
+          text-decoration: none;
+          transition: var(--transicao);
+      }
+
+      .footer-links a:hover {
+          color: var(--dourado);
+          padding-left: 5px;
+      }
+
+      .social-icons a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          color: white;
+          margin-right: 10px;
+          transition: var(--transicao);
+      }
+
+      .social-icons a:hover {
+          background-color: var(--dourado);
+          color: var(--marrom);
+          transform: translateY(-3px);
+      }
+
+      .copyright {
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          padding-top: 1.5rem;
+          margin-top: 2rem;
+          font-size: 0.9rem;
+      }
+
+      /* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  background: var(--verde-primario);
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--verde-secundario);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top i {
+  font-size: 1.5rem;
+}    
+
+      /* ===== RESPONSIVIDADE ===== */
+      @media (max-width: 992px) {
+          .hero-section {
+              padding: 6rem 0 4rem;
+          }
+          
+          .hero-section h1 {
+              font-size: 2.5rem;
+          }
+      }
+
+      @media (max-width: 768px) {
+          .navbar {
+              border-radius: 0;
+          }
+          
+          .hero-section {
+              padding: 5rem 0 3rem;
+          }
+          
+          .hero-section h1 {
+              font-size: 2rem;
+          }
+          
+          .hero-section p {
+              font-size: 1rem;
+          }
+          
+          .info-card {
+              padding: 1.5rem;
+          }
+      }
+
+      @media (max-width: 576px) {
+          .hero-section {
+              padding: 4rem 0 2rem;
+          }
+          
+          .hero-section h1 {
+              font-size: 1.75rem;
+          }
+          
+          .section-title {
+              margin-bottom: 2rem;
+          }
+      }
+    </style>
+</head>
+<body>
+  <!-- Navbar Corrigida -->
+ <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img width="200" src="imagens/ConfrariaSiteLogo.png" alt="Confraria Literária">
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"> 
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="noticias.html">NOTÍCIAS</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="display-4 mb-4">Agricultura Sustentável e Tecnologia</h1>
+      <p class="lead mb-5">Como a inovação tecnológica está revolucionando a produção de alimentos de forma sustentável</p>
+    </div>
+  </section>
+
+  <!-- Importância da Agricultura Sustentável -->
+  <section class="content-section">
+    <div class="container">
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="info-card">
+            <h2><i class="bi bi-tree"></i> Por que Agricultura Sustentável?</h2>
+            <p class="lead">A agricultura sustentável busca equilibrar a produção de alimentos com a preservação ambiental e justiça social.</p>
+            <p>Com a população mundial crescendo e os recursos naturais se esgotando, precisamos de soluções inteligentes que:</p>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Reduzam o uso de água e pesticidas</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Aumentem a produtividade sem expandir áreas cultivadas</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Preservem a biodiversidade e a saúde do solo</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Melhorem a qualidade de vida dos agricultores</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i> Garantam segurança alimentar para as futuras gerações</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="img-container">
+            <img src="../Confraria_literaria/imagens/segundaimagem.jpg" alt="Agricultura sustentável" class="img-fluid">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tecnologias Transformadoras -->
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+          <div class="info-card">
+            <h2><i class="bi bi-cpu"></i> Tecnologias Transformadoras</h2>
+            <p>A agricultura 4.0 está revolucionando o campo com soluções inteligentes e sustentáveis:</p>
+            
+            <div class="row mt-4">
+              <div class="col-md-6 mb-3">
+                <div class="step-box">
+                  <div class="d-flex">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                      <h5>Agricultura de Precisão</h5>
+                      <p class="small mb-0">Sensores e GPS para otimizar insumos e irrigação</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="step-box">
+                  <div class="d-flex">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                      <h5>Drones Agrícolas</h5>
+                      <p class="small mb-0">Monitoramento aéreo e aplicação precisa de defensivos</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="step-box">
+                  <div class="d-flex">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                      <h5>IoT no Campo</h5>
+                      <p class="small mb-0">Sensores conectados monitoram solo, clima e plantas</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="step-box">
+                  <div class="d-flex">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                      <h5>Big Data Agrícola</h5>
+                      <p class="small mb-0">Análise de dados para tomada de decisão inteligente</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="img-container">
+            <img src="../Confraria_literaria/imagens/terceiraimagem.jpg" alt="Tecnologia no campo" class="img-fluid">
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefícios da Agricultura Sustentável -->
+      <div id="beneficios" class="row mb-5">
+        <div class="col-12">
+          <h2 class="section-title"><i class="bi bi-graph-up me-3"></i>Benefícios da Agricultura Sustentável</h2>
+        </div>
+        
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="info-card text-center">
+            <div class="step-number mx-auto mb-3">1</div>
+            <h3>Eficiência Hídrica</h3>
+            <p>Sistemas de irrigação inteligente reduzem o consumo de água em até 50%, preservando recursos hídricos.</p>
+            <img src="../Confraria_literaria/imagens/quartaimagem.jpg" alt="Irrigação eficiente" class="img-fluid rounded mt-3">
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="info-card text-center">
+            <div class="step-number mx-auto mb-3">2</div>
+            <h3>Redução de Agrotóxicos</h3>
+            <p>Técnicas como controle biológico e monitoramento digital diminuem a necessidade de defensivos químicos.</p>
+            <img src="../Confraria_literaria/imagens/quintaimagem.jpg" alt="Controle biológico" class="img-fluid rounded mt-3">
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="info-card text-center">
+            <div class="step-number mx-auto mb-3">3</div>
+            <h3>Energia Renovável</h3>
+            <p>Uso de energia solar, biogás e outras fontes limpas reduzem a pegada de carbono da produção agrícola.</p>
+            <img src="../Confraria_literaria/imagens/sextaimagem.jpg" alt="Energia renovável" class="img-fluid rounded mt-3">
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="info-card text-center">
+            <div class="step-number mx-auto mb-3">4</div>
+            <h3>Agricultura Urbana</h3>
+            <p>Tecnologias como hidroponia e fazendas verticais trazem produção local para centros urbanos.</p>
+            <img src="../Confraria_literaria/imagens/setimaimagem.jpg" alt="Agricultura urbana" class="img-fluid rounded mt-3">
+          </div>
+        </div>
+      </div>
+
+      <!-- Casos de Sucesso -->
+      <div class="row">
+        <div class="col-12 mb-4">
+          <h2 class="section-title"><i class="bi bi-trophy me-3"></i>Casos de Sucesso no Brasil</h2>
+        </div>
+        
+        <div class="col-lg-6 mb-4">
+          <div class="info-card">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-droplet-half fs-3 text-primary me-3"></i>
+                  <div>
+                    <h5>Sistema ILPF</h5>
+                    <p class="small">Integração Lavoura-Pecuária-Floresta aumenta produtividade e recupera solos</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-phone fs-3 text-info me-3"></i>
+                  <div>
+                    <h5>Apps para Agricultores</h5>
+                    <p class="small">Soluções como AgroClima e Plantio Certo ajudam no planejamento agrícola</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-robot fs-3 text-success me-3"></i>
+                  <div>
+                    <h5>Robótica Agrícola</h5>
+                    <p class="small">Robôs para colheita e monitoramento reduzem custos e aumentam precisão</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-brightness-high fs-3 text-warning me-3"></i>
+                  <div>
+                    <h5>Energia Solar</h5>
+                    <p class="small">Fazendas solares fornecem energia limpa para propriedades rurais</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 mb-4">
+          <div class="info-card">
+            <h3>Como Implementar na Sua Propriedade</h3>
+            <p>Comece sua transição para a agricultura sustentável com tecnologia:</p>
+            <ol class="mt-3">
+              <li class="mb-2">Faça um diagnóstico da sua propriedade</li>
+              <li class="mb-2">Comece com tecnologias de baixo custo (como apps e sensores simples)</li>
+              <li class="mb-2">Busque capacitação e assistência técnica</li>
+              <li class="mb-2">Aproveite linhas de crédito para agricultura sustentável</li>
+              <li>Monitore resultados e ajuste continuamente</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botão Voltar ao Topo -->
+  <a href="#" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
+  
+  <!-- Scripts Personalizados -->
+
+<script>
+    // Botão voltar ao topo - versão melhorada (funciona em todas as páginas)
+    window.addEventListener('scroll', function() {
+      const backToTop = document.querySelector('.back-to-top');
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+  
+    // Adicionando a função de clique com animação mais suave
+    document.querySelector('.back-to-top').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      // Adiciona uma animação de clique
+      this.classList.add('clicked');
+      setTimeout(() => {
+        this.classList.remove('clicked');
+      }, 300);
+    });
+      
+    // Suavizar rolagem para links âncora (funciona em todas as páginas)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  
+    // Ativar item ativo na navbar (funciona em todas as páginas)
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.parentElement.classList.add('active');
+        }
+      });
+  
+      // VERIFICA SE ESTAMOS NA PÁGINA HOME PARA ATIVAR AS ANIMAÇÕES
+      if (currentPage === 'index.html' || currentPage === 'index.html' || currentPage === '') {
+        // Animação dos cards ao rolar a página (SÓ NA HOME)
+        const animateOnScroll = function() {
+          const cards = document.querySelectorAll('.info-card, .step-box');
+          cards.forEach(card => {
+            const cardPosition = card.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (cardPosition < screenPosition) {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }
+          });
+        };
+  
+        // Inicializa as animações (SÓ NA HOME)
+        const cards = document.querySelectorAll('.info-card, .step-box');
+        cards.forEach(card => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        animateOnScroll();
+        window.addEventListener('scroll', animateOnScroll);
+      }
+    });
+  </script>
+</body>
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <img src="../Confraria_literaria/imagens/doacoes_imagem.jpeg" alt="Confraria Literária" class="footer-logo">
+          <p>Seu apoio transforma páginas em ações!<br>Escaneie para contribuir com nosso projeto ambiental!</p>
+         
+        </div>
+        
+        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+          <div class="footer-links">
+            <h5>Links</h5>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="noticias.html">Notícias</a></li>
+              <li><a href="card1.html">Recicle com Consciência</a></li>
+              <li><a href="card3.html">Inovações em Transporte Sustentável</a></li>
+              <li><a href="card2.html">Agricultura Sustentável</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <div class="footer-links">
+            <h5>Integrantes</h5>
+            <ul>
+              <li><a href="#">Gabriel Souza (DEV)</a></li>
+              <li><a href="#">Gabriel Oliveira (DEV)</a></li>
+              <li><a href="#">Gabriel Carvalho (DSG)</a></li>
+              <li><a href="#">Rafael Olegário</a></li>
+              <li><a href="#">Érika Flávia</a></li>          
+              <li><a href="#">Danton Carlos</a></li>
+              <li><a href="#">Luís Otávio</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-links">
+            <h5>Contatos</h5>
+            <div class="social-icons mt-3">
+              <br>
+              <a href="https://www.instagram.com/_.souzawr._?igsh=MXd1M3g3M3JrYWoyaw=="><i class="bi bi-instagram"> </i></a> Gabriel de Souza
+            </br>
+            <br>
+              <a href="https://www.instagram.com/bielxll7_?igsh=M2h3NWhnczZ1Z25v"><i class="bi bi-instagram"></i></a> Gabriel Oliveira
+          </br>
+          <br>
+              <a href="https://www.instagram.com/gabrielcarvalho.dsg?igsh=cm96bzdnNDNzODN5"><i class="bi bi-instagram"></i></a> Gabriel Carvalho
+         </br>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright text-center">
+        <p>&copy; 2025 Confraria Literária. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  
+  </html>
